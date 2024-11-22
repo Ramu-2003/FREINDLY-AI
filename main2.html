@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Friendly-AI - STEP-5</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Comic+Neue:wght@400;700&display=swap');
+
+        body {
+            font-family: 'Comic Neue', cursive;
+            margin: 0;
+            padding: 0;
+            background: linear-gradient(to bottom, #ffffff, #f0f0f0);
+            color: #333;
+        }
+        header {
+            background-color: #6c757d;
+            padding: 20px;
+            color: white;
+            text-align: center;
+            position: relative;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+        }
+        header h1 {
+            margin: 0;
+            font-size: 2.5em;
+        }
+        .sign-out {
+            position: absolute;
+            top: 20px;
+            right: 20px;
+            background-color: #dc3545;
+            color: white;
+            padding: 10px 15px;
+            border: none;
+            border-radius: 5px;
+            font-size: 1em;
+            cursor: pointer;
+            transition: background-color 0.3s;
+        }
+        .sign-out:hover {
+            background-color: #c82333;
+        }
+        nav {
+            background-color: #4CAF50;
+            overflow: hidden;
+            display: flex;
+            justify-content: space-around;
+            padding: 10px 0;
+        }
+        nav a {
+            color: white;
+            text-decoration: none;
+            padding: 10px 15px;
+            font-size: 1.2em;
+            transition: background-color 0.3s, color 0.3s;
+        }
+        nav a:hover {
+            background-color: white;
+            color: #4CAF50;
+            border-radius: 5px;
+        }
+        main {
+            padding: 20px;
+        }
+        main h2 {
+            font-size: 2em;
+            margin-top: 0;
+        }
+        main ul {
+            list-style: none;
+            padding: 0;
+        }
+        main ul li {
+            margin: 10px 0;
+            font-size: 1.2em;
+        }
+        .next-step {
+            margin-top: 20px;
+            padding: 10px 20px;
+            background-color: #4CAF50;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            font-size: 1.2em;
+            cursor: pointer;
+            transition: background-color 0.3s;
+        }
+        .next-step:hover {
+            background-color: #45a049;
+        }
+    </style>
+    <script>
+        function signOut() {
+            const confirmation = confirm("Are you sure you want to sign out?");
+            if (confirmation) {
+                window.open('', '_self'); // Opens a blank page in the same tab
+                window.close();          // Tries to close the tab (may not work in all browsers)
+            }
+        }
+    </script>
+</head>
+<body>
+    <header>
+        <h1>Friendly-AI</h1>
+        <button class="sign-out" onclick="signOut()">Sign Out</button>
+    </header>
+    <nav>
+        <a href="#home">Home</a>
+        <a href="tab3.html">Tab 2</a>
+        <a href="tab4.html">Tab 3</a>
+        <a href="tab5.html">Tab 4</a>
+        <a href="tab6.html">Tab 5</a>
+        <a href="tab7.html">Tab 6</a>
+        <a href="tab8.html">Tab 7</a>
+        <a href="tab9.html">updates/notificaton</a>
+    </nav>
+    <main>
+        <h2>Rules of the Website</h2>
+        <ul>
+            <li>Rule 1: Be respectful to others.</li>
+            <li>Rule 2: Use the tabs to navigate.</li>
+            <li>Rule 3: Follow the guidelines provided in each tab.</li>
+            <li>Rule 4: Ensure your actions align with our community principles.</li>
+        </ul>
+    </main>
+</body>
+</html>

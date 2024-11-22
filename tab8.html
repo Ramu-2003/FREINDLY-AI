@@ -1,0 +1,188 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title> Free AI Tools</title>
+    <style>
+        body {
+            font-family: 'Comic Neue', cursive;
+            margin: 0;
+            padding: 0;
+            background-color: #fff;
+            color: #333;
+        }
+        header, nav {
+            background-color: #333;
+            color: white;
+            padding: 10px;
+            text-align: center;
+        }
+        nav a {
+            color: white;
+            text-decoration: none;
+            margin: 0 15px;
+        }
+        nav a:hover {
+            text-decoration: underline;
+        }
+        main {
+            padding: 20px;
+            text-align: center;
+            background-color: #f2f2f2;
+        }
+        .ai-tools-section {
+            max-width: 800px;
+            margin: 20px auto;
+            background: #ffffff;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+            padding: 20px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+        .ai-tool-slot {
+            display: inline-block;
+            width: 200px;
+            margin: 15px;
+            text-align: center;
+            cursor: pointer;
+            padding: 10px;
+            border-radius: 5px;
+            border: 1px solid #ddd;
+            background-color: #f9f9f9;
+        }
+        .ai-tool-slot:hover {
+            background-color: #e1e1e1;
+        }
+        .ai-tool-slot img {
+            width: 100%;
+            height: auto;
+            border-radius: 5px;
+        }
+        .ai-tool-slot p {
+            margin-top: 10px;
+            font-size: 18px;
+            font-weight: bold;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <h1> Free AI Tools</h1>
+    </header>
+
+    <main>
+        <div class="ai-tools-section" id="ai-tools-section">
+            <h2>Select an AI Tool</h2>
+
+            <!-- AI Tool Slot 1 -->
+            <div class="ai-tool-slot" onclick="openAITool('chatgpt')">
+                <img src="chatgpt-logo.jpg" alt="ChatGPT">
+                <p>ChatGPT</p>
+            </div>
+
+            <!-- AI Tool Slot 2 -->
+            <div class="ai-tool-slot" onclick="openAITool('blackbox-ai')">
+                <img src="blackbox-ai-logo.jpg" alt="Black Box AI">
+                <p>Black Box AI</p>
+            </div>
+
+            <!-- Additional AI Tools can be added below -->
+            <!-- Example AI Tool Slot -->
+            <div class="ai-tool-slot" onclick="openAITool('tool3')">
+                <img src="tool3-logo.jpg" alt="AI Tool 3">
+                <p>AI Tool 3</p>
+            </div>
+        </div>
+    </main>
+<body>
+    <div class="button-row">
+        <button onclick="redirectToMain2()" class="back-button">Back</button>
+        <button onclick="redirectToTab4()" class="next-button">Next</button>
+    </div>
+
+   
+    <script>
+        function redirectToMain2() {
+            window.location.href = "main2.html";
+        }
+
+        function redirectToTab4() {
+            window.location.href = "tab9.html"; /* Replace with actual URL or section ID */
+        }
+    </script>
+
+    <style>
+        /* Header styling */
+        header {
+            padding: 20px;
+            background-color: #333;
+            color: white;
+            text-align: center;
+        }
+
+        /* Button row container */
+        .button-row {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 0 20px;
+            margin: 20px 0;
+        }
+
+        /* Back button styling */
+        .back-button {
+            padding: 10px 20px;
+            background-color: #4CAF50;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 1em;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+            transition: background-color 0.3s;
+        }
+
+        .back-button:hover {
+            background-color: #45a049;
+        }
+
+        /* Next (Tab 4) button styling */
+        .next-button {
+            padding: 10px 20px;
+            background-color: #007BFF;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 1em;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+            transition: background-color 0.3s;
+        }
+
+        .next-button:hover {
+            background-color: #0056b3;
+        }
+    </style>
+</body>
+
+    <script>
+        // AI Tool URLs (for simulation purposes)
+        const aiToolURLs = {
+            'chatgpt': "https://chat.openai.com",  // URL for ChatGPT
+            'blackbox-ai': "https://www.blackbox.ai",  // URL for Black Box AI
+            'tool3': "https://www.example.com"  // URL for another AI tool
+        };
+
+        // Open AI Tool's website
+        function openAITool(toolId) {
+            const toolURL = aiToolURLs[toolId];
+            if (toolURL) {
+                window.open(toolURL, "_blank");
+            } else {
+                alert("This AI tool is not available yet.");
+            }
+        }
+    </script>
+</body>
+</html>

@@ -1,0 +1,212 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Doc-Locker - Movies</title>
+    <style>
+        body {
+            font-family: 'Comic Neue', cursive;
+            margin: 0;
+            padding: 0;
+            background-color: #fff;
+            color: #333;
+        }
+        header, nav {
+            background-color: #333;
+            color: white;
+            padding: 10px;
+            text-align: center;
+        }
+        nav a {
+            color: white;
+            text-decoration: none;
+            margin: 0 15px;
+        }
+        nav a:hover {
+            text-decoration: underline;
+        }
+        main {
+            padding: 20px;
+            text-align: center;
+            background-color: #f2f2f2;
+        }
+        .movie-section {
+            max-width: 800px;
+            margin: 20px auto;
+            background: #ffffff;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+            padding: 20px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+        .movie-slot {
+            display: inline-block;
+            width: 200px;
+            margin: 15px;
+            text-align: center;
+        }
+        .movie-slot img {
+            width: 100%;
+            height: auto;
+            border-radius: 5px;
+        }
+        .action-button {
+            padding: 10px 20px;
+            background-color: #4CAF50;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            margin: 10px;
+        }
+        .action-button:hover {
+            background-color: #45a049;
+        }
+        .action-buttons {
+            margin-top: 10px;
+            display: flex;
+            justify-content: center;
+        }
+        .action-buttons button {
+            margin: 0 10px;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <h1>Movies</h1>
+    </header>
+
+    <main>
+        <div class="movie-section" id="movies-section">
+            <h2>Select a Movie</h2>
+
+            <!-- Movie Slot 1 -->
+            <div class="movie-slot" onclick="showMovieOptions('movie1')">
+                <img src="movie1-image.jpg" alt="Movie 1">
+                <p>Movie 1</p>
+            </div>
+
+            <!-- Movie Slot 2 -->
+            <div class="movie-slot" onclick="showMovieOptions('movie2')">
+                <img src="movie2-image.jpg" alt="Movie 2">
+                <p>Movie 2</p>
+            </div>
+
+            <!-- Movie Slot 3 -->
+            <div class="movie-slot" onclick="showMovieOptions('movie3')">
+                <img src="movie3-image.jpg" alt="Movie 3">
+                <p>Movie 3</p>
+            </div>
+        </div>
+    </main>
+<body>
+    <div class="button-row">
+        <button onclick="redirectToMain2()" class="back-button">Back</button>
+        <button onclick="redirectToTab4()" class="next-button">Next</button>
+    </div>
+
+   
+    <script>
+        function redirectToMain2() {
+            window.location.href = "main2.html";
+        }
+
+        function redirectToTab4() {
+            window.location.href = "tab6.html"; /* Replace with actual URL or section ID */
+        }
+    </script>
+
+    <style>
+        /* Header styling */
+        header {
+            padding: 20px;
+            background-color: #333;
+            color: white;
+            text-align: center;
+        }
+
+        /* Button row container */
+        .button-row {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 0 20px;
+            margin: 20px 0;
+        }
+
+        /* Back button styling */
+        .back-button {
+            padding: 10px 20px;
+            background-color: #4CAF50;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 1em;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+            transition: background-color 0.3s;
+        }
+
+        .back-button:hover {
+            background-color: #45a049;
+        }
+
+        /* Next (Tab 4) button styling */
+        .next-button {
+            padding: 10px 20px;
+            background-color: #007BFF;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 1em;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+            transition: background-color 0.3s;
+        }
+
+        .next-button:hover {
+            background-color: #0056b3;
+        }
+    </style>
+</body>
+    <script>
+        // Movie URLs (for simulation purposes)
+        const movieURLs = {
+            movie1: {
+                streamURL: "https://path/to/movie1.mp4",  // URL to stream
+                downloadURL: "https://path/to/movie1-download.mp4"  // URL to download
+            },
+            movie2: {
+                streamURL: "https://path/to/movie2.mp4", 
+                downloadURL: "https://path/to/movie2-download.mp4"
+            },
+            movie3: {
+                streamURL: "https://path/to/movie3.mp4", 
+                downloadURL: "https://path/to/movie3-download.mp4"
+            }
+        };
+
+        // Show options when a movie slot is clicked
+        function showMovieOptions(movieId) {
+            const movie = movieURLs[movieId];
+            const userChoice = prompt("Choose an option: (1) Online Watch (2) Download");
+            
+            if (userChoice === "1") {
+                // Online Watch option
+                window.open(movie.streamURL, "_blank");
+            } else if (userChoice === "2") {
+                // Download option
+                const link = document.createElement("a");
+                link.href = movie.downloadURL;
+                link.download = movieId + ".mp4";
+                link.click();
+                alert("Movie downloaded successfully!");
+            } else {
+                alert("Invalid option. Please choose either '1' for Online Watch or '2' for Download.");
+            }
+        }
+    </script>
+</body>
+</html>

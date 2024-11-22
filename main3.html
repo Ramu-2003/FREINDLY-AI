@@ -1,0 +1,234 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Friendly-AI - STEP-6</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Comic+Neue:wght@400;700&display=swap');
+
+        body {
+            font-family: 'Comic Neue', cursive;
+            margin: 0;
+            padding: 0;
+            background: linear-gradient(to bottom, #ffffff, #f0f0f0);
+            color: #333;
+        }
+        header {
+            background-color: #6c757d;
+            padding: 20px;
+            color: white;
+            text-align: center;
+        }
+        header h1 {
+            margin: 0;
+            font-size: 2.5em;
+        }
+        nav {
+            background-color: #4CAF50;
+            display: flex;
+            justify-content: space-around;
+            padding: 10px 0;
+        }
+        nav a {
+            color: white;
+            text-decoration: none;
+            padding: 10px 15px;
+            font-size: 1.2em;
+        }
+        nav a:hover {
+            background-color: white;
+            color: #4CAF50;
+            border-radius: 5px;
+        }
+        main {
+            padding: 20px;
+        }
+        .locker-section {
+            margin: 20px auto;
+            max-width: 600px;
+            text-align: center;
+        }
+        .locker-section h2 {
+            margin-bottom: 20px;
+        }
+        .input-group {
+            margin: 10px 0;
+        }
+        .input-group label {
+            display: block;
+            font-size: 1.2em;
+            margin-bottom: 5px;
+        }
+        .input-group input {
+            width: 100%;
+            padding: 10px;
+            font-size: 1em;
+            margin-bottom: 10px;
+        }
+        .upload-button, .action-button {
+            padding: 10px 20px;
+            margin: 5px;
+            background-color: #4CAF50;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+        .upload-button:hover, .action-button:hover {
+            background-color: #45a049;
+        }
+        .uploaded-files {
+            margin-top: 20px;
+            text-align: left;
+        }
+        .uploaded-files ul {
+            list-style-type: none;
+            padding: 0;
+        }
+        .uploaded-files ul li {
+            background-color: #f8f8f8;
+            margin: 5px 0;
+            padding: 10px;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+        }
+        .action-buttons {
+            display: flex;
+            gap: 10px;
+            margin-top: 10px;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <h1>Friendly-AI</h1>
+    </header>
+    <nav>
+        <a href="step5.html">Home</a>
+        <a href="#doclocker">Doc-Locker</a>
+    </nav>
+    <main>
+        <div class="locker-section">
+            <h2>Doc-Locker</h2>
+            <div id="passkey-block">
+                <div class="input-group">
+                    <label for="pin">Set 4-Digit PIN</label>
+                    <input type="password" id="pin" maxlength="4" placeholder="Enter 4-digit PIN">
+                </div>
+                <div class="input-group">
+                    <label for="password">Set Password</label>
+                    <input type="password" id="password" placeholder="Enter Password">
+                </div>
+                <button class="upload-button" onclick="setAccess()">Set Pass-Key</button>
+            </div>
+            <div id="upload-block" style="display: none;">
+                <div class="input-group">
+                    <label for="file">Upload File</label>
+                    <input type="file" id="file">
+                </div>
+                <button class="upload-button" onclick="uploadFile()">Upload</button>
+                <div class="uploaded-files" id="uploaded-files">
+                    <h3>Uploaded Files:</h3>
+                    <ul id="file-list"></ul>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <script>
+        let storedPin = null;
+        let storedPassword = null;
+
+        function setAccess() {
+            const pin = document.getElementById("pin").value;
+            const password = document.getElementById("password").value;
+
+            if (pin.length === 4 || password) {
+                storedPin = pin || null;
+                storedPassword = password || null;
+                alert("Pass-Key Set! You can now upload files.");
+                document.getElementById("passkey-block").style.display = "none";
+                document.getElementById("upload-block").style.display = "block";
+            } else {
+                alert("Please enter a valid 4-digit PIN or password.");
+            }
+        }
+
+        function verifyPassKey() {
+            const inputKey = prompt("Enter your Pass-Key:");
+            return inputKey === storedPin || inputKey === storedPassword;
+        }
+
+        function uploadFile() {
+            const fileInput = document.getElementById("file");
+            const fileList = document.getElementById("file-list");
+            const file = fileInput.files[0];
+
+            if (file) {
+                const listItem = document.createElement("li");
+
+                const fileDisplay = document.createElement("div");
+                fileDisplay.textContent = File: ${file.name};
+                listItem.appendChild(fileDisplay);
+
+                const actionButtons = document.createElement("div");
+                actionButtons.classList.add("action-buttons");
+
+                const openButton = document.createElement("button");
+                openButton.textContent = "Open";
+                openButton.className = "action-button";
+                openButton.onclick = () => {
+                    if (verifyPassKey()) {
+                        const fileURL = URL.createObjectURL(file);
+                        if (file.type.startsWith("image/")) {
+                            const img = document.createElement("img");
+                            img.src = fileURL;
+                            img.style.maxWidth = "100%";
+                            alert("Displaying Image:");
+                            document.body.appendChild(img);
+                        } else {
+                            window.open(fileURL, "_blank");
+                        }
+                    } else {
+                        alert("Incorrect Pass-Key!");
+                    }
+                };
+
+                const downloadButton = document.createElement("button");
+                downloadButton.textContent = "Download";
+                downloadButton.className = "action-button";
+                downloadButton.onclick = () => {
+                    if (verifyPassKey()) {
+                        const link = document.createElement("a");
+                        link.href = URL.createObjectURL(file);
+                        link.download = file.name;
+                        link.click();
+                    } else {
+                        alert("Incorrect Pass-Key!");
+                    }
+                };
+
+                const deleteButton = document.createElement("button");
+                deleteButton.textContent = "Delete";
+                deleteButton.className = "action-button";
+                deleteButton.onclick = () => {
+                    if (verifyPassKey()) {
+                        listItem.remove();
+                    } else {
+                        alert("Incorrect Pass-Key!");
+                    }
+                };
+
+                actionButtons.append(openButton, downloadButton, deleteButton);
+                listItem.appendChild(actionButtons);
+                fileList.appendChild(listItem);
+
+                fileInput.value = ""; // Clear file input
+            } else {
+                alert("Please select a file to upload.");
+            }
+        }
+    </script>
+</body>
+</html>

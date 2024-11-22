@@ -1,0 +1,213 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title> Web-Series</title>
+    <style>
+        body {
+            font-family: 'Comic Neue', cursive;
+            margin: 0;
+            padding: 0;
+            background-color: #fff;
+            color: #333;
+        }
+        header, nav {
+            background-color: #333;
+            color: white;
+            padding: 10px;
+            text-align: center;
+        }
+        nav a {
+            color: white;
+            text-decoration: none;
+            margin: 0 15px;
+        }
+        nav a:hover {
+            text-decoration: underline;
+        }
+        main {
+            padding: 20px;
+            text-align: center;
+            background-color: #f2f2f2;
+        }
+        .web-series-section {
+            max-width: 800px;
+            margin: 20px auto;
+            background: #ffffff;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+            padding: 20px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+        .web-series-slot {
+            display: inline-block;
+            width: 200px;
+            margin: 15px;
+            text-align: center;
+        }
+        .web-series-slot img {
+            width: 100%;
+            height: auto;
+            border-radius: 5px;
+        }
+        .action-button {
+            padding: 10px 20px;
+            background-color: #4CAF50;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            margin: 10px;
+        }
+        .action-button:hover {
+            background-color: #45a049;
+        }
+        .action-buttons {
+            margin-top: 10px;
+            display: flex;
+            justify-content: center;
+        }
+        .action-buttons button {
+            margin: 0 10px;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <h1> Web-Series</h1>
+    </header>
+
+    <main>
+        <div class="web-series-section" id="web-series-section">
+            <h2>Select a Web-Series</h2>
+
+            <!-- Web-Series Slot 1 -->
+            <div class="web-series-slot" onclick="showWebSeriesOptions('web-series1')">
+                <img src="web-series1-image.jpg" alt="Web-Series 1">
+                <p>Web-Series 1</p>
+            </div>
+
+            <!-- Web-Series Slot 2 -->
+            <div class="web-series-slot" onclick="showWebSeriesOptions('web-series2')">
+                <img src="web-series2-image.jpg" alt="Web-Series 2">
+                <p>Web-Series 2</p>
+            </div>
+
+            <!-- Web-Series Slot 3 -->
+            <div class="web-series-slot" onclick="showWebSeriesOptions('web-series3')">
+                <img src="web-series3-image.jpg" alt="Web-Series 3">
+                <p>Web-Series 3</p>
+            </div>
+        </div>
+    </main>
+<body>
+    <div class="button-row">
+        <button onclick="redirectToMain2()" class="back-button">Back</button>
+        <button onclick="redirectToTab4()" class="next-button">Next</button>
+    </div>
+
+   
+    <script>
+        function redirectToMain2() {
+            window.location.href = "main2.html";
+        }
+
+        function redirectToTab4() {
+            window.location.href = "tab7.html"; /* Replace with actual URL or section ID */
+        }
+    </script>
+
+    <style>
+        /* Header styling */
+        header {
+            padding: 20px;
+            background-color: #333;
+            color: white;
+            text-align: center;
+        }
+
+        /* Button row container */
+        .button-row {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 0 20px;
+            margin: 20px 0;
+        }
+
+        /* Back button styling */
+        .back-button {
+            padding: 10px 20px;
+            background-color: #4CAF50;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 1em;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+            transition: background-color 0.3s;
+        }
+
+        .back-button:hover {
+            background-color: #45a049;
+        }
+
+        /* Next (Tab 4) button styling */
+        .next-button {
+            padding: 10px 20px;
+            background-color: #007BFF;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 1em;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+            transition: background-color 0.3s;
+        }
+
+        .next-button:hover {
+            background-color: #0056b3;
+        }
+    </style>
+</body>
+
+    <script>
+        // Web-Series URLs (for simulation purposes)
+        const webSeriesURLs = {
+            'web-series1': {
+                streamURL: "https://path/to/web-series1.mp4",  // URL to stream
+                downloadURL: "https://path/to/web-series1-download.mp4"  // URL to download
+            },
+            'web-series2': {
+                streamURL: "https://path/to/web-series2.mp4", 
+                downloadURL: "https://path/to/web-series2-download.mp4"
+            },
+            'web-series3': {
+                streamURL: "https://path/to/web-series3.mp4", 
+                downloadURL: "https://path/to/web-series3-download.mp4"
+            }
+        };
+
+        // Show options when a web-series slot is clicked
+        function showWebSeriesOptions(webSeriesId) {
+            const webSeries = webSeriesURLs[webSeriesId];
+            const userChoice = prompt("Choose an option: (1) Online Watch (2) Download");
+            
+            if (userChoice === "1") {
+                // Online Watch option
+                window.open(webSeries.streamURL, "_blank");
+            } else if (userChoice === "2") {
+                // Download option
+                const link = document.createElement("a");
+                link.href = webSeries.downloadURL;
+                link.download = webSeriesId + ".mp4";
+                link.click();
+                alert("Web-Series downloaded successfully!");
+            } else {
+                alert("Invalid option. Please choose either '1' for Online Watch or '2' for Download.");
+            }
+        }
+    </script>
+</body>
+</html>
